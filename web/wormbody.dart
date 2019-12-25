@@ -31,9 +31,9 @@ class Worm{
     _parent.children.add(_head);
     String widthString = _head.getComputedStyle().width;
     String heghtString = _head.getComputedStyle().height;
-    _height = int.parse(heghtString.substring(0,heghtString.indexOf(new RegExp(r'\D'))));
-    _width = int.parse(widthString.substring(0,widthString.indexOf(new RegExp(r'\D'))));
-    growNody(3);
+    _height = int.parse(heghtString.substring(0,heghtString.indexOf(RegExp(r'\D'))));
+    _width = int.parse(widthString.substring(0,widthString.indexOf(RegExp(r'\D'))));
+    growBody(3);
   }
 
   void turnNorth(){
@@ -62,11 +62,11 @@ class Worm{
     _currentDirection = Worm.WEST;
   }
 
-  void growNody(int count) {
+  void growBody(int count) {
     for(int i=0;i<count;i++){
-      DivElement bodyElement = new DivElement();
+      DivElement bodyElement = DivElement();
       bodyElement.classes.add('body');
-      if(_body.length>0){
+      if(_body.isNotEmpty){
         bodyElement.style.left = _body.last.style.left;
         bodyElement.style.top = _body.last.style.top;
       }else{
@@ -111,11 +111,11 @@ class Worm{
     return _head.borderEdge.intersects(e.borderEdge);
   }
   bool intersectsWithWorm(Worm s){
-    if(this.intersectsWith(s._head)){
+    if(intersectsWith(s._head)){
       return true;
     }
     for(DivElement e in s._body){
-      if(this.intersectsWith(e)){
+      if(intersectsWith(e)){
         return true;
       }
     }
