@@ -30,8 +30,8 @@ class Worm{
     _currentDirection = direction;
     _parent.children.add(_head);
     String widthString = _head.getComputedStyle().width;
-    String heghtString = _head.getComputedStyle().height;
-    _height = int.parse(heghtString.substring(0,heghtString.indexOf(RegExp(r'\D'))));
+    String heightString = _head.getComputedStyle().height;
+    _height = int.parse(heightString.substring(0,heightString.indexOf(RegExp(r'\D'))));
     _width = int.parse(widthString.substring(0,widthString.indexOf(RegExp(r'\D'))));
     growBody(3);
   }
@@ -129,5 +129,30 @@ class Worm{
     }
     return false;
   }
+  bool outOfBoard(){
+    String widthString = _parent.getComputedStyle().width;
+    String heightString = _parent.getComputedStyle().height;
+    int height = int.parse(heightString.substring(0,heightString.indexOf(RegExp(r'\D'))));
+    int width = int.parse(widthString.substring(0,widthString.indexOf(RegExp(r'\D'))));
+    if(_x>(width - _width)){
+      return true;
+    }
+    if(_y>(height-_height)){
+      return true;
+    }
+    if(_x<0){
+      return true;
+    }
+    if(_y<0){
+      return true;
+    }
+    return false;
+  }
 
+  void flicker(){
+    _head.style.animation = 'flicker 500ms';
+    new Timer(new Duration(microseconds: 500),()=>_head.style.animation='');
+  }
+  int get score=>_score;
+      set score(value)=>_score=value;
 }

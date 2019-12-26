@@ -35,6 +35,8 @@ html, body {
   width: 20px;
   background-color: DarkRed;
   z-index: 1;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
 }
 .body{
   position: absolute;
@@ -42,6 +44,8 @@ html, body {
   width: 20px;
   background-color: red;
   z-index: 1;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
 }
 .food:nth-of-type(3n+1){
   position: absolute;
@@ -60,4 +64,44 @@ html, body {
   width: 20px;
   height: 20px;
   background-color: orange;
+}
+#announcement{
+  position: relative;
+  text-align: center;
+  color: darkblue;
+  font-size: 600%;
+  z-index: 2;
+  -moz-animation: fadein 3s;
+  -webkit-animation: fadein 3s;
+  -o-animation: fadein 3s;
+  animation: fadein 3s;
+}
+
+@-webkit-keyframes fadein{
+  from{opacity: 0.0;}
+  to{opacity: 1.0;}
+}
+
+@-moz-keyframes fadein{
+  from{opacity: 0.0;}
+  to{opacity: 1.0;}
+}
+@-o-keyframes fadein{
+  from{opacity: 0.0;}
+  to{opacity: 1.0;}
+}
+@keyframes fadein{
+  from{opacity: 0.0;}
+  to{opacity: 1.0;}
+}
+@keyframes flicker {
+  0%{
+    background-color: darkred;
+  }
+  50%{
+    background-color: blue;
+  }
+  100%{
+    background-color: darkred;
+  }
 }
